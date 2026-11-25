@@ -1,17 +1,266 @@
-<div class="buttons">
-  <button id="angryBtn" class="outline">
-    Still Angry 😤
-  </button>
 
-  <button onclick="forgiven()">
-    Okay, I Forgive You ❤️
-  </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Zuha ❤️ | Your Faizu</title>
 
-  <button class="outline" onclick="timeNeeded()">
-    Need Some Time 🥺
-  </button>
-</div>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<p id="cuteMessage" class="gold">
-  Zuha, ek chhoti si smile please 🥹
-</p>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#e3bd65;--black:#080808}
+body{
+ background:radial-gradient(ellipse at top,#28200f,#080808 65%);
+ color:white;font-family:Poppins,sans-serif;
+ min-height:100vh;overflow-x:hidden
+}
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0}
+.particle{
+ position:absolute;width:3px;height:3px;border-radius:50%;
+ background:#ffdf8b;box-shadow:0 0 12px #e3bd65;
+ animation:float linear infinite
+}
+@keyframes float{to{transform:translateY(-110vh);opacity:0}}
+section{
+ display:none;position:relative;z-index:1;
+ min-height:100svh;padding:65px 20px;
+ align-items:center;justify-content:center;
+ flex-direction:column;text-align:center
+}
+section.active{display:flex;animation:show .8s ease}
+@keyframes show{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+h1,h2{font-family:'Playfair Display',serif}
+h1{font-size:clamp(39px,9vw,68px);line-height:1.2}
+h2{font-size:clamp(30px,7vw,46px)}
+.gold{color:var(--gold)}
+.small{
+ color:#c7a65c;letter-spacing:4px;font-size:10px;
+ text-transform:uppercase;margin-bottom:24px
+}
+p{color:#c8c1b3;font-size:14px;line-height:2;margin:16px auto;max-width:530px}
+.line{width:75px;height:1px;background:var(--gold);margin:25px auto}
+.heart{font-size:75px;animation:beat 1.5s infinite;filter:drop-shadow(0 0 18px #e3bd65)}
+@keyframes beat{50%{transform:scale(1.15)}}
+button{
+ border:1px solid #e3bd65;border-radius:50px;
+ padding:14px 25px;background:linear-gradient(135deg,#ffe5a0,#b18432);
+ color:#100d07;font-family:Poppins,sans-serif;
+ font-weight:600;font-size:13px;cursor:pointer;
+ margin:9px;box-shadow:0 5px 25px #d6a84430;
+ transition:.25s
+}
+button:active{transform:scale(.96)}
+.outline{background:transparent;color:var(--gold)}
+.card{
+ width:100%;max-width:550px;padding:30px 23px;
+ border:1px solid #d5ad5c66;border-radius:20px;
+ background:linear-gradient(145deg,#201a0e,#0b0b0b);
+ box-shadow:0 10px 60px #d8ad4012
+}
+.footer{color:#88734b;font-size:10px;letter-spacing:3px;margin-top:40px}
+.sorry-grid{
+ display:grid;grid-template-columns:repeat(2,1fr);
+ gap:10px;width:100%;max-width:600px;margin:20px auto
+}
+.sorry-word{
+ padding:12px 5px;border:1px solid #c9a34e55;
+ border-radius:10px;background:#171209;
+ color:#ffe6a2;font-family:'Playfair Display',serif;
+ font-size:13px;animation:show .5s both
+}
+.envelope{font-size:95px;cursor:pointer;animation:beat 2s infinite}
+#letter{display:none;text-align:left}
+#letter p{margin-bottom:15px}
+.signature{font:italic 26px 'Playfair Display';color:var(--gold);margin-top:20px}
+.buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+#angryBtn{position:relative;transition:transform .2s}
+#cuteMessage{color:var(--gold);font-family:'Playfair Display';font-size:17px;margin-top:25px}
+.heart-pop{position:fixed;z-index:100;font-size:25px;pointer-events:none;animation:pop 1.8s forwards}
+@keyframes pop{to{transform:translateY(-180px) rotate(30deg) scale(1.8);opacity:0}}
+@media(max-width:480px){
+ section{padding:45px 16px}
+ .card{padding:23px 16px}
+ button{font-size:12px;padding:13px 18px}
+ .sorry-word{font-size:11px}
+}
+</style>
+</head>
+
+<body>
+<div id="particles"></div>
+
+<section id="p1" class="active">
+ <div class="small">A special message for someone special</div>
+ <h1>Hey,<br><span class="gold">Zuha...</span></h1>
+ <div class="line"></div>
+ <p>Today, I don't have a perfect explanation. I just have a heart that wants to say something.</p>
+ <button onclick="go(2)">Open My Heart ✨</button>
+ <div class="footer">A LITTLE WORLD MADE FOR YOU</div>
+</section>
+
+<section id="p2">
+ <div class="heart">💛</div>
+ <div class="small">From the bottom of my heart</div>
+ <h1>I'm Really<br><span class="gold">Sorry.</span></h1>
+ <div class="line"></div>
+ <p>Zuha, if my words or actions hurt you, I genuinely regret it. I never wanted to be the reason behind your sadness.</p>
+ <button onclick="go(3)">Read My Feelings ❤️</button>
+</section>
+
+<section id="p3">
+ <div class="small">Something I want you to know</div>
+ <h2>You Are <span class="gold">Special</span></h2>
+ <div class="card">
+  <p>Zuha, tum mere liye bahut special ho.</p>
+  <p>I know saying sorry cannot magically fix everything.</p>
+  <p>But I want you to know that your feelings matter to me. I don't want my ego to be more important than your happiness.</p>
+  <p>I cannot change yesterday, but I can try to make tomorrow better.</p>
+ </div>
+ <button onclick="go(4)">A Little Cute Surprise 🥺</button>
+</section>
+
+<section id="p4">
+ <div class="heart">🥺</div>
+ <h2>50 Times <span class="gold">Sorry!</span></h2>
+ <p>Because one sorry doesn't always express everything.</p>
+ <div class="sorry-grid" id="grid"></div>
+ <button onclick="go(5)">Read My Letter 💌</button>
+</section>
+
+<section id="p5">
+ <div class="small">A letter from Faizu</div>
+ <h2>For My <span class="gold">Zuha</span></h2>
+ <div class="envelope" id="envelope" onclick="openLetter()">💌</div>
+ <p id="hint">Tap the envelope to open your letter.</p>
+ <div class="card" id="letter">
+  <p>Dear Zuha, ❤️</p>
+  <p>I don't know the perfect words to make everything right, but I know one thing: I am genuinely sorry.</p>
+  <p>Kabhi kabhi humse galti ho jaati hai. Maybe I failed to understand your feelings, and I regret that.</p>
+  <p>I don't expect you to forget everything instantly. You can take your time. I respect your feelings.</p>
+  <p>I just hope that someday we can smile again without this sadness between us.</p>
+  <p>Thank you for being someone so special in my life.</p>
+  <div class="signature">Your Faizu ❤️</div>
+ </div>
+ <button onclick="go(6)">One Last Question...</button>
+</section>
+
+<section id="p6">
+ <div class="heart">💛</div>
+ <div class="small">A tiny question from Faizu</div>
+ <h1>Can You<br><span class="gold">Forgive Me?</span></h1>
+ <div class="line"></div>
+ <p>Even if you need time, that's okay. I just wanted you to know how much I mean this apology.</p>
+ <div class="buttons">
+  <button id="angryBtn" class="outline">Still Angry? 😤</button>
+  <button onclick="forgive()">I Forgive You ❤️</button>
+  <button class="outline" onclick="wait()">I Need Some Time 🥺</button>
+ </div>
+ <div id="cuteMessage">Zuha, ek chhoti si smile please 🥹</div>
+</section>
+
+<section id="p7">
+ <div class="heart">❤️</div>
+ <h1 class="gold" id="finalTitle">Thank You, Zuha!</h1>
+ <div class="line"></div>
+ <p id="finalText"></p>
+ <div class="signature">With love,<br>Your Faizu ❤️</div>
+ <div class="footer">THIS LITTLE WORLD WAS MADE JUST FOR YOU</div>
+</section>
+
+<script>
+// Golden background particles
+for(let i=0;i<55;i++){
+ let x=document.createElement('div');
+ x.className='particle';
+ x.style.left=Math.random()*100+'%';
+ x.style.top=Math.random()*100+'%';
+ x.style.animationDuration=(6+Math.random()*12)+'s';
+ x.style.animationDelay=Math.random()*8+'s';
+ document.getElementById('particles').appendChild(x);
+}
+
+// Page navigation
+function go(n){
+ document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+ document.getElementById('p'+n).classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// 50 apologies
+let grid=document.getElementById('grid');
+for(let i=1;i<=50;i++){
+ let d=document.createElement('div');
+ d.className='sorry-word';
+ d.style.animationDelay=(i*.035)+'s';
+ d.textContent='SORRY ZUHA ❤️';
+ grid.appendChild(d);
+}
+
+// Letter
+function openLetter(){
+ document.getElementById('envelope').style.display='none';
+ document.getElementById('hint').style.display='none';
+ document.getElementById('letter').style.display='block';
+}
+
+// Cute moving button
+let angry=document.getElementById('angryBtn');
+let messages=[
+ "Arey Zuha, ek smile toh banti hai 🥺",
+ "Faizu ka sorry dil se hai ❤️",
+ "Thoda sa gussa kam kar do na 😭",
+ "Sending you a virtual hug 🫂",
+ "You are very special, Zuha 💛",
+ "Okay, I will wait for your smile 🥹"
+];
+let index=0;
+
+function moveButton(){
+ let x=Math.random()*90-45;
+ let y=Math.random()*35-17;
+ angry.style.transform=`translate(${x}px,${y}px)`;
+ document.getElementById('cuteMessage').textContent=messages[index];
+ index=(index+1)%messages.length;
+}
+
+angry.addEventListener('mouseenter',moveButton);
+angry.addEventListener('touchstart',e=>{
+ e.preventDefault();
+ moveButton();
+},{passive:false});
+angry.addEventListener('click',()=>{
+ moveButton();
+});
+
+// Heart animation
+function hearts(){
+ for(let i=0;i<35;i++){
+  let h=document.createElement('div');
+  h.className='heart-pop';
+  h.textContent=['❤️','💛','💖','✨','💕'][i%5];
+  h.style.left=Math.random()*95+'vw';
+  h.style.top=(45+Math.random()*40)+'vh';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),1900);
+ }
+}
+
+function forgive(){
+ hearts();
+ document.getElementById('finalTitle').textContent='You Made My Day! ❤️';
+ document.getElementById('finalText').textContent=
+ 'Thank you, Zuha. Your smile means a lot to me. I promise to value your feelings and keep trying to be better. Sending you the biggest hug! 🫂';
+ go(7);
+}
+
+function wait(){
+ document.getElementById('finalTitle').textContent='Take Your Time, Zuha 🥺';
+ document.getElementById('finalText').textContent=
+ 'I understand. You do not have to forgive me before you are ready. Take all the time you need. Your feelings matter, always.';
+ go(7);
+}
+</script>
+</body>
+</html>
